@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #1a1a40);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-card img {
+            width: 100%;
+            height: 200px; /* fixed height */
+            object-fit: cover; /* makes all images fit uniformly */
+            border-radius: 8px;
+        }
+
+
+        .certificate-title {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #00ffc3;
+        }
+
+        .certificate-org {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="page-title">Certificates</h1>
+
+    <div class="certificates-container">
+        <div class="certificate-card" onclick="openModal('{% static 'my/1.jpg' %}')">
+            <img src="{% static 'my/1.jpg' %}" alt="Certificate 1">
+            <h3 class="certificate-title">Certificate of Completion</h3>
+            <p class="certificate-org">Issued by: Entri Elevate</p>
+        </div>
+        <div class="certificate-card" onclick="openModal('{% static 'my/A+.jpg' %}')">
+            <img src="{% static 'my/A+.jpg' %}" alt="Certificate 2">
+            <h3 class="certificate-title">Certificate</h3>
+            <p class="certificate-org">Issued by: Entri Elevate</p>
+        </div>
+        <div class="certificate-card" onclick="openModal('{% static 'my/badge.jpg' %}')">
+            <img src="{% static 'my/badge.jpg' %}" alt="Certificate 3">
+            <h3 class="certificate-title">Badge of Achievement</h3>
+            <p class="certificate-org">Issued by: illinois institute of technology</p>
+        </div>
+        <div class="certificate-card" onclick="openModal('{% static 'my/2.jpg' %}')">
+            <img src="{% static 'my/2.jpg' %}" alt="Certificate 4">
+            <h3 class="certificate-title">Internship</h3>
+            <p class="certificate-org">Issued by: Codetech It solution pvt ltd</p>
+        </div>
+        <div class="certificate-card" onclick="openModal('{% static 'my/6.png' %}')">
+            <img src="{% static 'my/6.png' %}" alt="Certificate 5">
+            <h3 class="certificate-title">Microsoft excel</h3>
+            <p class="certificate-org">Issued by: Entri Elevate</p>
+        </div>
+    </div>
+
+    <div id="certificate-modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script>
+        function openModal(imgSrc) {
+            document.getElementById("modal-img").src = imgSrc;
+            document.getElementById("certificate-modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("certificate-modal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
